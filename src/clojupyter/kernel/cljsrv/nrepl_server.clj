@@ -24,7 +24,7 @@
 
 (defn start-nrepl-server
   []
-  (let [srv (nrepl.server/start-server :handler (clojupyter-nrepl-handler))
+  (let [srv (nrepl.server/start-server :handler (clojupyter-nrepl-handler) :port 43400)
         sock-addr (.getLocalSocketAddress (:server-socket srv))]
     (println (str "Clojupyter: Started nREPL server on " sock-addr "."))
     (alter-var-root #'*NREPL-SERVER-ADDR* (constantly sock-addr))
